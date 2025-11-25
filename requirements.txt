@@ -1,0 +1,4 @@
+python-telegram-bot
+python-dotenv
+yt_dlp
+pyktok

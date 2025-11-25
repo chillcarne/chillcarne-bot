@@ -9,23 +9,15 @@ def get_tiktok_metadata(tiktok_url: str) -> dict:
     return share_meta
 
 def _parse_video_name(tiktok_url: str) -> str:
-    if "vm.tiktok.com" in tiktok_url:
-        # vm.tiktok.com
-        parts = tiktok_url.replace("https://vm.tiktok.com/", "").rstrip("/")
-        # If the original link ended with "/", add "_.mp4", else ".mp4"
+    tiktok_urls = ["vm.tiktok.com", "vt.tiktok.com"]
+
+    if any(url in tiktok_url for url in tiktok_urls):
+        parts = parts = tiktok_url.replace("https://vm.tiktok.com/", "").rstrip("/") if "vm.tiktok.com" in tiktok_url else tiktok_url.replace("https://vt.tiktok.com/", "").rstrip("/")
         if tiktok_url.endswith("/"):
             return f"{parts}_.mp4"
         else:
             return f"{parts}.mp4"
-    elif "vt.tiktok.com" in tiktok_url:
-        # vt.tiktok.com
-        parts = tiktok_url.replace("https://vt.tiktok.com/", "").rstrip("/")
-        if tiktok_url.endswith("/"):
-            return f"{parts}_.mp4"
-        else:
-            return f"{parts}.mp4"
-    elif "www.tiktok.com" in tiktok_url:
-        # www.tiktok.com
+    else:
         import re
         match = re.search(r'@([^/]+)/video/(\d+)', tiktok_url)
         if match:
@@ -34,9 +26,6 @@ def _parse_video_name(tiktok_url: str) -> str:
             return f"@{username}_video_{video_id}.mp4"
         else:
             raise ValueError("Invalid TikTok URL format")
-    else:
-        raise ValueError("Unsupported TikTok URL format")
-
 
 def download_tiktok_video(tiktok_url: str) -> str:    
     os.makedirs("downloads", exist_ok=True)

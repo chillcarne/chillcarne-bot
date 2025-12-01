@@ -38,25 +38,3 @@ def download_tiktok_video(tiktok_url: str) -> str:
     video_path = os.path.join("downloads", _parse_video_name(tiktok_url))
 
     return video_path
-
-
-
-# def download_tiktok(update, context):
-#     url = update.message.text
-#     logger.info(f"User {update.effective_user.id} is downloading TikTok video from URL: {url}")
-    
-#     video_path = pyk.download_tiktok(url)
-    
-#     with open(video_path, 'rb') as video_file:
-#         update.message.reply_video(video_file)
-    
-#     logger.info(f"TikTok video downloaded and sent to user {update.effective_user.id}")
-
-
-# # сохранить одно видео + метаданные
-# pyk.save_tiktok(
-#     'https://vm.tiktok.com/ZNRJ8FVnw/',
-#     save_video=True,
-#     metadata_fn='video_data.csv',
-
-# )

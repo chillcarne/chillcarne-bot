@@ -3,6 +3,7 @@ from .start_handler import start_handler
 from .error_handler import error_handler
 from .youtube_handler import youtube_handler, show_available_formats_callback, download_video_handler_callback, back_to_previous_options_handler_callback
 from .tiktok_handler import tiktok_handler
+from .bob_handler import bob_handler
 
 def setup_handlers(app: Application):
     # Start handler
@@ -19,3 +20,6 @@ def setup_handlers(app: Application):
 
     # TikTok
     app.add_handler(tiktok_handler)
+
+    # Bob handler
+    app.add_handler(bob_handler)

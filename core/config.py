@@ -10,3 +10,5 @@ DEVELOPER_CHAT_ID = int(os.getenv("DEVELOPER_CHAT_ID", "0"))
 
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
 LOG_FILE_PATH = os.getenv("LOG_FILE_PATH", None)  # например, "bot.log" или путь
+
+TIMEZONE = os.getenv("TIMEZONE", "UTC")

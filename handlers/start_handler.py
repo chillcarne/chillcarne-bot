@@ -25,7 +25,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     text+= "Additionally, bug reports can be submitted manually on GitHub Issues page.\n"
     text+= "\n"
     text+= "The bot’s source code is open and available under the MIT license:\n"
-    text+= "https://github.com/chillcarne/chillcarne_bot 📄\n"
+    text+= "https://github.com/chillcarne/chillcarne-bot 📄\n"
 
     await update.message.reply_text(text)
 

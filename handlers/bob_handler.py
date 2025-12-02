@@ -1,7 +1,9 @@
 from core.logger import setup_logger
+from core.config import TIMEZONE
 from telegram import Update
 from telegram.ext import CommandHandler, ContextTypes
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 logger = setup_logger(f"my_bot.{__name__}")
 
@@ -11,7 +13,7 @@ async def bob(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
     logger.info(f"User {update.effective_user.id} use the bob command.")
     
-    current_time = datetime.now().strftime("%H")
+    current_time = datetime.now(ZoneInfo(TIMEZONE)).strftime("%H")
 
     logger.debug(f"Current bot time: {current_time}")
 
